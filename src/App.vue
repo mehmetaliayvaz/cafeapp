@@ -3,7 +3,9 @@
     <Sidebar />
     <div class="App-content">
       <Header />
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
 
   </div>

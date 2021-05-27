@@ -9,9 +9,50 @@
   margin: 0;
 }
 
+body{
+  background-color: $bg-color;
+}
+
 .container{
   max-width: 1500px;
   width: 100%;
   margin: 0 auto;
   padding: 0 50px;
+}
+
+button{
+  background-color: $button;
+  color: $white;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 3px;
+
+  &.active{
+    background-color: $button-hover;
+  }
+}
+
+#saveButton{
+  margin: 20px 0;
+  background-color: $sidebar-color;
+  box-shadow: $shadow;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: $sidebar-hover;
+  }
+}
+
+//animations
+.fade-enter{
+  opacity: 0;
+}
+.fade-enter-active{
+  transition: opacity .1s ease-out;
+}
+/*.fade-leave{}*/
+.fade-leave-active{
+  transition: opacity .1s ease-out;
+  opacity: 0;
 }
