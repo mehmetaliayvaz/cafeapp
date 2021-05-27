@@ -3,6 +3,7 @@
     <Sidebar />
     <div class="App-content">
       <Header />
+      <router-view></router-view>
     </div>
 
   </div>
