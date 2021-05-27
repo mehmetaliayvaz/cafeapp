@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;900&display=swap');
 
 * {
   font-family: 'Mulish', sans-serif;
@@ -7,4 +7,11 @@
   list-style-type: none;
   text-decoration: none;
   margin: 0;
+}
+
+.container{
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
 }

@@ -1,0 +1,42 @@
+.Sidebar{
+  background-color: $sidebar-color;
+  width: 230px;
+  height: 100vh;
+  box-shadow: $sidebar-shadow;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  &-logo{
+    padding: 30px;
+
+    a{
+      
+      h3{
+        font-size: 30px;
+        font-weight: 900;
+        color: $white;
+      }
+
+    }
+
+  }
+
+  &-nav{
+    display: flex;
+    flex-direction: column;
+
+    a{
+      color: $white;
+      padding: 20px 30px;
+      transition: 0.3s;
+
+      &:hover{
+        background-color: $sidebar-hover;
+      }
+    }
+
+  }
+
+}

@@ -1,7 +1,9 @@
 <template>
   <div class="Sidebar">
     <div class="Sidebar-logo">
-      <h3>CafeApp</h3>
+      <router-link to="/">
+        <h3>CafeApp</h3>
+      </router-link>
     </div>
     <div class="Sidebar-nav">
       <router-link to="/">Ana Sayfa</router-link>
