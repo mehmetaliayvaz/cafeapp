@@ -1,0 +1,40 @@
+.List{
+  width: 600px;
+  background-color: $white;
+  box-shadow: $small-shadow;
+  border-radius: 3px;
+  margin: 0 auto;
+
+
+  table{
+
+    tr{
+
+      th{
+        border-bottom: 2px solid #eee;
+        color: black;
+        text-align: left;
+        padding: 15px;
+      }
+  
+      td{
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+  
+        svg{
+          cursor: pointer;
+          fill: $soft-grey;
+          transition: 0.3s;
+  
+          &:hover{
+            fill: $hover-grey;
+          }
+        }
+  
+      }
+
+    }
+    
+  }
+
+}
