@@ -3,7 +3,7 @@
   background-color: $white;
   box-shadow: $small-shadow;
   border-radius: 3px;
-  margin: 0 auto;
+  margin: 50px auto;
 
 
   table{
@@ -28,6 +28,19 @@
   
           &:hover{
             fill: $hover-grey;
+          }
+        }
+
+        input{
+          border: none;
+          border-bottom: 1px solid $light-grey;
+        }
+
+        #person-button{
+          background-color: $sidebar-color;
+
+          &:hover{
+            background-color: $sidebar-hover;
           }
         }
   

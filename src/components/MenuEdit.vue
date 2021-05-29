@@ -2,20 +2,20 @@
   <div class="MenuEdit">
     <div class="container">
       <ListNav></ListNav>
-      <List></List>
+      <MenuList></MenuList>
     </div>
   </div>
 </template>
 
 <script>
 import ListNav from './layout/ListNav';
-import List from './layout/List';
+import MenuList from './layout/MenuList';
 
 export default {
   name: 'MenuEdit',
   components:{
     ListNav,
-    List,
+    MenuList,
   }
 }
 </script>

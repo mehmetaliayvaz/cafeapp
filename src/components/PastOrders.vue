@@ -1,16 +1,14 @@
 <template>
   <div class="PastOrders">
-    <List id="past-orders"></List>
   </div>
 </template>
 
 <script>
-import List from './layout/List';
 
 export default {
   name: 'PastOrders',
   components:{
-    List,
+    
   }
 }
 </script>
@@ -21,8 +19,6 @@ export default {
       justify-content: center;
     }
 
-    #past-orders{
-      margin-top: 50px;
-    }
+    
 
 </style>

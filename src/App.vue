@@ -21,6 +21,10 @@ export default {
     Sidebar,
     Header,
 
+  },
+  created(){
+    this.$store.dispatch('getPersons');
+    this.$store.dispatch('getStorageMenu');
   }
 }
 </script>

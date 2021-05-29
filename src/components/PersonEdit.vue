@@ -1,25 +1,24 @@
 <template>
   <div class="PersonEdit">
     <div class="container">
-      <ListNav></ListNav>
-      <List></List>
+      <PersonList id="person-edit"></PersonList>
     </div>
   </div>
 </template>
 
 <script>
-import ListNav from './layout/ListNav';
-import List from './layout/List';
+import PersonList from './layout/PersonList';
 
 export default {
   name: 'PersonEdit',
   components:{
-    ListNav,
-    List,
+    PersonList,
   }
 }
 </script>
 
 <style lang="scss">
+ 
+
 
 </style>

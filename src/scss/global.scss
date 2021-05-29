@@ -23,14 +23,21 @@ body{
 button{
   background-color: $button;
   color: $white;
+  box-shadow: $small-shadow;
   padding: 10px 20px;
   border-radius: 3px;
   cursor: pointer;
   margin-right: 1px;
+  transition: 0.3s;
 
   &.active{
     background-color: $button-hover;
   }
+
+  &:hover{
+    box-shadow: $shadow;
+  }
+
 }
 
 #saveButton{
