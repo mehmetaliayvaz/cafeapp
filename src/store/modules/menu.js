@@ -28,9 +28,9 @@ const actions = {
 
   addCategory({commit, dispatch}, category){
     commit('addCategory', category);
-    dispatch('setStorageCategory');
+    dispatch('setStorageMenu');
   },
-  setStorageCategory({state, dispatch}){
+  setStorageMenu({state, dispatch}){
     localStorage.setItem('menu', JSON.stringify(state.menu));
     dispatch('getStorageMenu');
   },

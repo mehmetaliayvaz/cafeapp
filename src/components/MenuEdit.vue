@@ -1,21 +1,26 @@
 <template>
   <div class="MenuEdit">
     <div class="container">
-      <ListNav></ListNav>
-      <MenuList></MenuList>
+      <MenuNav  @change="change = $event"></MenuNav>
+      <MenuList :change="change"></MenuList>
     </div>
   </div>
 </template>
 
 <script>
-import ListNav from './layout/ListNav';
+import MenuNav from './layout/MenuNav';
 import MenuList from './layout/MenuList';
 
 export default {
   name: 'MenuEdit',
   components:{
-    ListNav,
+    MenuNav,
     MenuList,
+  },
+  data(){
+    return{
+      change: 1,
+    }
   }
 }
 </script>

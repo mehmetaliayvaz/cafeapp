@@ -6,22 +6,22 @@
         <th>Fiyat</th>
         <th></th>
       </tr>
-      <tr>
-        <td>Tiramusu</td>
-        <td>15 TL</td>
+      <tr v-for="(item, index) in getMenu[change-1].contents" :key="index">
+        <td>{{ item.dessert }}</td>
+        <td>{{ item.price }}</td>
         <td>
-          <svg width="20px" height="20px" viewBox="0 0 32 32">
+          <svg @click="deleteMenuContents(index)" width="20px" height="20px" viewBox="0 0 32 32">
             <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
             <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
           </svg>
         </td>
       </tr>
       <tr>
-        <td><input type="text" placeholder="İsim"></td>
+        <td><input v-model="item.dessert" type="text" placeholder="İsim"></td>
         <td>
-          <input type="number" name="" placeholder="Fiyat">
+          <input v-model="item.price" type="number" name="" placeholder="Fiyat">
         </td>
-        <td><button id="person-button">Ekle</button></td>
+        <td><button @click="addMenuContents" id="person-button">Ekle</button></td>
       </tr>
       
     </table>
@@ -29,20 +29,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MenuList',
+  props: ['change'],
   data(){
     return{
-      dessert: null,
-      price: null,
-      category: null,
+      item: {
+        dessert: null,
+        price: null,
+      }
     }
   },
   computed:{
+    ...mapGetters(['getMenu'])
   },
   methods:{
-  
+    addMenuContents(){
+      this.$store.state.menu.menu[this.change-1].contents.push(this.item);
+      this.$store.dispatch('setStorageMenu');
+      this.item = {};
+    },
+    deleteMenuContents(index){
+      this.$store.state.menu.menu[this.change-1].contents.splice(index, 1);
+      this.$store.dispatch('setStorageMenu');
+    }
   }
 
 }
