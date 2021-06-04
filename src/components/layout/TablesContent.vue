@@ -1,22 +1,91 @@
 <template>
   <div class="TablesContent">
-    <div class="TablesContent-row" v-for="i in letters" :key="i">
-      <Table v-for="n in 10" :row="i" :column="n" :key="n" />
+    <div class="TablesContent-container">
+      <div class="TablesContent-wrapper">
+        <Table @change="tables[index].active = $event"  
+               v-for="(table, index) in getTablesMenu[this.change-1].contents" 
+               :data="table" :key="index" />
+      </div>
+      <button @click="saveTablesContent">Kaydet</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Table from './Table';
+//import {tables} from '../../tables';
 
 export default {
   name: 'TablesContent',
+  props: ['change'],
   components: {
     Table,
   },
+  computed:{
+    ...mapGetters(['getTablesMenu'])
+  },
+  created(){
+    this.isCreated();
+  },
   data(){
     return{
-      letters: ['A', 'B', 'C', 'D', 'E'],
+      tables : [
+        { name: 'A1', active: 0 },
+        { name: 'A2', active: 0 },
+        { name: 'A3', active: 0 },
+        { name: 'A4', active: 0 },
+        { name: 'A5', active: 0 },
+        { name: 'A6', active: 0 },
+        { name: 'A7', active: 0 },
+        { name: 'A8', active: 0 },
+        { name: 'A9', active: 0 },
+        { name: 'A10', active: 0 },
+        { name: 'B1', active: 0 },
+        { name: 'B2', active: 0 },
+        { name: 'B3', active: 0 },
+        { name: 'B4', active: 0 },
+        { name: 'B5', active: 0 },
+        { name: 'B6', active: 0 },
+        { name: 'B7', active: 0 },
+        { name: 'B8', active: 0 },
+        { name: 'B9', active: 0 },
+        { name: 'B10', active: 0 },
+        { name: 'C1', active: 0 },
+        { name: 'C2', active: 0 },
+        { name: 'C3', active: 0 },
+        { name: 'C4', active: 0 },
+        { name: 'C5', active: 0 },
+        { name: 'C6', active: 0 },
+        { name: 'C7', active: 0 },
+        { name: 'C8', active: 0 },
+        { name: 'C9', active: 0 },
+        { name: 'C10', active: 0 },
+        { name: 'D1', active: 0 },
+        { name: 'D2', active: 0 },
+        { name: 'D3', active: 0 },
+        { name: 'D4', active: 0 },
+        { name: 'D5', active: 0 },
+        { name: 'D6', active: 0 },
+        { name: 'D7', active: 0 },
+        { name: 'D8', active: 0 },
+        { name: 'D9', active: 0 },
+        { name: 'D10', active: 0 },
+      ]
+    }
+  },
+  methods: {
+    saveTablesContent(){
+      this.$store.state.tables.tables[this.change-1].contents = this.tables;
+      this.$store.dispatch('setStorageTablesMenu');
+    },
+    isCreated(){
+      this.tables = this.getTablesMenu[this.change-1].contents;
+    },
+  },
+  watch:{
+    change(){
+      console.log(this.change);
     }
   }
 

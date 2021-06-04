@@ -3,16 +3,7 @@
     <div class="container">
 
       <TablesNav @change="change = $event"/>
-
-      <transition name="fade" mode="out-in">
-        <TablesContent v-if="change == 1" />
-      </transition>
-      <transition name="fade" mode="out-in">
-        <TablesContent v-if="change == 2" />
-      </transition>
-      <transition name="fade" mode="out-in">
-        <TablesContent v-if="change == 3" />
-      </transition>
+      <TablesContent :change="change" />
       
     </div>
   </div>

@@ -1,5 +1,5 @@
 .ListNav{
-  margin: 40px 0;
+  margin: 40px 0 10px;
   display: flex;
   justify-content: center;
 
@@ -15,5 +15,29 @@
     cursor: pointer;
     fill: $hover-grey;
   }
+
+  &-button{
+    position: relative;
+    padding: 5px;
+
+    svg{
+      fill: $white;
+      position: absolute;
+      right: 3px;
+      transition: 0.5s;
+
+      &:hover{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &-input{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+
   
 }

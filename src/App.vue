@@ -25,6 +25,7 @@ export default {
   created(){
     this.$store.dispatch('getPersons');
     this.$store.dispatch('getStorageMenu');
+    this.$store.dispatch('getStorageTablesMenu');
   }
 }
 </script>
