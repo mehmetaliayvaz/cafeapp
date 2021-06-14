@@ -88,6 +88,7 @@ export default {
     activeOrder(index){
       this.show = 0;
       this.activeIndex = index;
+      this.$store.state.activeOrders.activeOrders = this.getTablesMenu[index].content;
     },
     deleteProduct(index){
       this.$store.state.activeOrders.activeOrders.splice(index, 1);
