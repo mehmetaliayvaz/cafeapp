@@ -2,8 +2,7 @@
   <div class="TablesEdit">
     <div class="container">
 
-      <TablesContent :change="change" />
-      <button id="saveButton">Değişiklikleri Kaydet</button>
+      <TablesContent />
       
     </div>
   </div>
@@ -11,18 +10,13 @@
 
 <script>
 import TablesContent from './layout/TablesContent';
-import TablesNav from './layout/TablesNav';
+
 
 export default {
   name: 'TablesEdit',
   components: {
     TablesContent,
-    TablesNav,
-  },
-  data(){
-    return{
-      change: 1,
-    }
+
   },
 
 

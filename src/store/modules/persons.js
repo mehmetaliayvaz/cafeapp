@@ -21,10 +21,6 @@ const mutations = {
     state.persons.push(payload);
   },
 
-  setEmptyPersons(state){
-    state.persons = [];
-  },
-
   setPersons(state, payload){
     state.persons = payload;
   },
@@ -49,7 +45,6 @@ const actions = {
 
   getPersons({dispatch, commit}){
     if (localStorage.getItem('persons') === null){ 
-      //commit('setEmptyPersons');
       dispatch('setStoragePersons');
     }
     else {

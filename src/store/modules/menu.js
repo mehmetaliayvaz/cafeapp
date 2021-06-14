@@ -1,5 +1,5 @@
 const state = {
-  menu: [],
+  menu: [{category: 'Genel', contents: []}],
 }
 
 const getters = {
@@ -14,9 +14,6 @@ const mutations = {
 
   addCategory(state, payload){
     state.menu.push(payload);
-  },
-  setEmptyMenu(state){
-    state.menu = [];
   },
   setMenu(state, payload){
     state.menu = payload;
@@ -34,9 +31,9 @@ const actions = {
     localStorage.setItem('menu', JSON.stringify(state.menu));
     dispatch('getStorageMenu');
   },
-  getStorageMenu({commit}){
+  getStorageMenu({commit, dispatch}){
     if (localStorage.getItem('menu') === null){ 
-      commit('setEmptyMenu');
+      dispatch('setStorageMenu');
     }
     else {
       var menu = JSON.parse(localStorage.getItem('menu'));

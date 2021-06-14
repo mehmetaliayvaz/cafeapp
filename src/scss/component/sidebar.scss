@@ -42,6 +42,11 @@
       &:hover{
         background-color: $sidebar-hover;
       }
+
+      &.active{
+        background-color: $sidebar-hover;
+      }
+
     }
 
   }

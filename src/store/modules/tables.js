@@ -26,10 +26,10 @@ const mutations = {
 
 const actions = {
 
-  addTablesCategory({commit, dispatch}, category){
-    commit('addTablesCategory', category);
-    dispatch('setStorageTablesMenu');
-  },
+  // addTablesCategory({commit, dispatch}, category){
+  //   commit('addTablesCategory', category);
+  //   dispatch('setStorageTablesMenu');
+  // },
   setStorageTablesMenu({state, dispatch}){
     localStorage.setItem('tablesMenu', JSON.stringify(state.tables));
     dispatch('getStorageTablesMenu');

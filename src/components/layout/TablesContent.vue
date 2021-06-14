@@ -1,26 +1,36 @@
 <template>
   <div class="TablesContent">
     <div class="TablesContent-container">
-      <div class="TablesContent-wrapper">
-        <Table @change="tables[index].active = $event"  
-               v-for="(table, index) in getTablesMenu[this.change-1].contents" 
+      <div v-if="this.$route.path == '/tables-edit'">
+        <div class="TablesContent-wrapper">
+          <Table  @change="tableContent[index].active = $event"  
+               v-for="(table, index) in getTablesMenu" 
                :data="table" :key="index" />
+        </div>
       </div>
-      <button @click="saveTablesContent">Kaydet</button>
+      <div v-if="this.$route.path == '/tables'">
+        <div class="TablesContent-wrapper">
+          <TableOrder  @change="tableContent[index].active = $event"  
+               v-for="(table, index) in getTablesMenu" 
+               :data="table" :key="index" />
+        </div>
+      </div>
+      <button v-if="this.$route.path == '/tables-edit'" @click="saveTablesContent">Değişiklikleri Kaydet</button>
     </div>
   </div>
 </template>
 
+
 <script>
 import { mapGetters } from 'vuex';
 import Table from './Table';
-//import {tables} from '../../tables';
+import TableOrder from './TableOrder';
 
 export default {
   name: 'TablesContent',
-  props: ['change'],
   components: {
     Table,
+    TableOrder,
   },
   computed:{
     ...mapGetters(['getTablesMenu'])
@@ -30,7 +40,7 @@ export default {
   },
   data(){
     return{
-      tables : [
+      tableContent : [
         { name: 'A1', active: 0 },
         { name: 'A2', active: 0 },
         { name: 'A3', active: 0 },
@@ -71,23 +81,19 @@ export default {
         { name: 'D8', active: 0 },
         { name: 'D9', active: 0 },
         { name: 'D10', active: 0 },
-      ]
+      ],
+
     }
   },
   methods: {
     saveTablesContent(){
-      this.$store.state.tables.tables[this.change-1].contents = this.tables;
+      this.$store.state.tables.tables = this.tableContent;
       this.$store.dispatch('setStorageTablesMenu');
     },
     isCreated(){
-      this.tables = this.getTablesMenu[this.change-1].contents;
+      this.tableContent = this.getTablesMenu;
     },
   },
-  watch:{
-    change(){
-      console.log(this.change);
-    }
-  }
 
 }
 </script>
