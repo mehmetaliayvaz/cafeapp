@@ -4,6 +4,10 @@ const state = {
 
 const getters = {
 
+   getActiveOrders(state){
+    return state.activeOrders;
+  }
+
 }
 
 const mutations = {

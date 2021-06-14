@@ -10,6 +10,7 @@ import persons from './modules/persons';
 import menu from './modules/menu';
 import tables from './modules/tables';
 import pastOrders from './modules/pastOrders';
+import activeOrders from './modules/activeOrders';
 
 Vue.use(Vuex);
 
@@ -23,6 +24,7 @@ const store =  new Vuex.Store({
     menu,
     tables,
     pastOrders,
+    activeOrders,
   }
 });
 

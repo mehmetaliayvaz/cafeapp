@@ -1,7 +1,8 @@
 <template>
-  <div @click="changeFullness" class="TablesContent-table"
-      :style="fullness == 1 ? 'background-color: #c7c7c7' : 'background-color: #E5E5E5'">
-    <span v-if="fullness == 1"> {{ data.name }} </span>
+  <div class="TablesContent-table"
+      :style="active == 1 ? 'background-color: #c7c7c7' : 'background-color: #E5E5E5'">
+    <span v-if="active == 1" 
+    :style="fullness == 1 ? 'color: #B71C1C' : 'color: #fff'">{{ data.name }} </span>
   </div>
 </template>
 
@@ -11,18 +12,14 @@ export default {
   props: ['data'],
   data(){
     return{
-      fullness: 0,
+      active: 0,
+      fullness: 1,
     }
   },
   created(){
-    this.fullness = this.data.active;
+    this.active = this.data.active;
+    this.fullness = this.data.fullness;
   },
-  methods:{
-    changeFullness(){
-      this.$emit('change', this.fullness);
-    },
-
-  }
 
 }
 </script>

@@ -3,16 +3,43 @@
     <div class="TablesContent-container">
       <div v-if="this.$route.path == '/tables-edit'">
         <div class="TablesContent-wrapper">
-          <Table  @change="tableContent[index].active = $event"  
+          <Table  
+               @change="tableContent[index].active = $event"  
                v-for="(table, index) in getTablesMenu" 
                :data="table" :key="index" />
         </div>
       </div>
-      <div v-if="this.$route.path == '/tables'">
+      <div v-if="this.$route.path == '/tables' && show == 1">
         <div class="TablesContent-wrapper">
-          <TableOrder  @change="tableContent[index].active = $event"  
+          <TableOrder 
+               @click.native="activeOrder(index)"  
                v-for="(table, index) in getTablesMenu" 
                :data="table" :key="index" />
+        </div>
+      </div>
+      <div class="TablesContent-menu" v-if="show == 0">
+        <div class="TablesContent-menu-list">
+          <MenuEdit  />
+          <table>
+            <tr>
+              <th>Sipariş Listesi</th>
+              <th>Fiyat</th>
+              <th></th>
+            </tr>
+            <tr v-for="(item, index) in getActiveOrders" :key="index">
+              <td>{{ item.dessert }}</td>
+              <td>{{ item.price }}</td>
+              <td>
+                <svg @click="deleteProduct(index)" width="20px" height="20px" viewBox="0 0 32 32">
+                  <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+                  <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
+                </svg>
+              </td>
+            </tr>
+          </table>
+        </div>  
+        <div class="TablesContent-menu-button">
+          <button @click="saveOrder">Değişiklikleri Kaydet</button>
         </div>
       </div>
       <button v-if="this.$route.path == '/tables-edit'" @click="saveTablesContent">Değişiklikleri Kaydet</button>
@@ -25,15 +52,17 @@
 import { mapGetters } from 'vuex';
 import Table from './Table';
 import TableOrder from './TableOrder';
+import MenuEdit from '../MenuEdit';
 
 export default {
   name: 'TablesContent',
   components: {
     Table,
     TableOrder,
+    MenuEdit,
   },
   computed:{
-    ...mapGetters(['getTablesMenu'])
+    ...mapGetters(['getTablesMenu', 'getActiveOrders'])
   },
   created(){
     this.isCreated();
@@ -41,47 +70,10 @@ export default {
   data(){
     return{
       tableContent : [
-        { name: 'A1', active: 0 },
-        { name: 'A2', active: 0 },
-        { name: 'A3', active: 0 },
-        { name: 'A4', active: 0 },
-        { name: 'A5', active: 0 },
-        { name: 'A6', active: 0 },
-        { name: 'A7', active: 0 },
-        { name: 'A8', active: 0 },
-        { name: 'A9', active: 0 },
-        { name: 'A10', active: 0 },
-        { name: 'B1', active: 0 },
-        { name: 'B2', active: 0 },
-        { name: 'B3', active: 0 },
-        { name: 'B4', active: 0 },
-        { name: 'B5', active: 0 },
-        { name: 'B6', active: 0 },
-        { name: 'B7', active: 0 },
-        { name: 'B8', active: 0 },
-        { name: 'B9', active: 0 },
-        { name: 'B10', active: 0 },
-        { name: 'C1', active: 0 },
-        { name: 'C2', active: 0 },
-        { name: 'C3', active: 0 },
-        { name: 'C4', active: 0 },
-        { name: 'C5', active: 0 },
-        { name: 'C6', active: 0 },
-        { name: 'C7', active: 0 },
-        { name: 'C8', active: 0 },
-        { name: 'C9', active: 0 },
-        { name: 'C10', active: 0 },
-        { name: 'D1', active: 0 },
-        { name: 'D2', active: 0 },
-        { name: 'D3', active: 0 },
-        { name: 'D4', active: 0 },
-        { name: 'D5', active: 0 },
-        { name: 'D6', active: 0 },
-        { name: 'D7', active: 0 },
-        { name: 'D8', active: 0 },
-        { name: 'D9', active: 0 },
-        { name: 'D10', active: 0 },
+        
       ],
+      show: 1,
+      activeIndex: null,
 
     }
   },
@@ -93,6 +85,18 @@ export default {
     isCreated(){
       this.tableContent = this.getTablesMenu;
     },
+    activeOrder(index){
+      this.show = 0;
+      this.activeIndex = index;
+    },
+    deleteProduct(index){
+      this.$store.state.activeOrders.activeOrders.splice(index, 1);
+    },
+    saveOrder(){
+      this.$store.state.tables.tables[this.activeIndex].content = this.$store.state.activeOrders.activeOrders;
+      this.$store.state.tables.tables[this.activeIndex].fullness = 1;
+      this.$store.dispatch('setStorageTablesMenu');
+    }
   },
 
 }
