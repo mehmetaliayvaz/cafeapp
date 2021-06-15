@@ -40,6 +40,7 @@
         </div>  
         <div class="TablesContent-menu-button">
           <button @click="saveOrder">Değişiklikleri Kaydet</button>
+          <button @click="endOrder">Siparişi Bitir</button>
         </div>
       </div>
       <button v-if="this.$route.path == '/tables-edit'" @click="saveTablesContent">Değişiklikleri Kaydet</button>
@@ -62,7 +63,7 @@ export default {
     MenuEdit,
   },
   computed:{
-    ...mapGetters(['getTablesMenu', 'getActiveOrders'])
+    ...mapGetters(['getTablesMenu', 'getActiveOrders', 'getActivePerson', 'getPersons'])
   },
   created(){
     this.isCreated();
@@ -74,7 +75,6 @@ export default {
       ],
       show: 1,
       activeIndex: null,
-
     }
   },
   methods: {
@@ -94,10 +94,31 @@ export default {
       this.$store.state.activeOrders.activeOrders.splice(index, 1);
     },
     saveOrder(){
-      this.$store.state.tables.tables[this.activeIndex].content = this.$store.state.activeOrders.activeOrders;
-      this.$store.state.tables.tables[this.activeIndex].fullness = 1;
+      var path = this.$store.state.tables.tables[this.activeIndex];
+      path.content = this.$store.state.activeOrders.activeOrders;
+      path.fullness = 1;
+      path.person = this.getPersons[this.getActivePerson].name;
+      path.date = new Date();
       this.$store.dispatch('setStorageTablesMenu');
-    }
+    },
+    endOrder(){
+      var path = this.$store.state.tables.tables[this.activeIndex];
+      var order = {
+        date : path.date,
+        person : path.person,
+        content : path.content,  
+      }
+      this.$store.state.oldOrders.oldOrders.push(order);
+      path.content = [];
+      path.date = null;
+      path.person = null;
+      path.fullness = 0;
+
+      this.$store.dispatch('setStorageTablesMenu');
+      this.$store.dispatch('setStorageOldOrders');
+
+      this.show = 1;
+    },
   },
 
 }

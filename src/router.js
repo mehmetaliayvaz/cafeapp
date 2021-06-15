@@ -9,6 +9,7 @@ import TablesEdit from './components/TablesEdit';
 import MenuEdit from './components/MenuEdit';
 import PersonEdit from './components/PersonEdit';
 import PastOrders from './components/PastOrders';
+import About from './components/About';
 
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   { path: '/menu-edit', component: MenuEdit},
   { path: '/person-edit', component: PersonEdit },
   { path: '/past-orders', component: PastOrders },
+  { path: '/about', component: About },
   { path : "*", redirect : '/'}
 ];
 

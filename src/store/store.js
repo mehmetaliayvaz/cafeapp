@@ -9,8 +9,8 @@ import getters from './getters';
 import persons from './modules/persons';
 import menu from './modules/menu';
 import tables from './modules/tables';
-import pastOrders from './modules/pastOrders';
 import activeOrders from './modules/activeOrders';
+import oldOrders from './modules/oldOrders';
 
 Vue.use(Vuex);
 
@@ -23,8 +23,8 @@ const store =  new Vuex.Store({
     persons,
     menu,
     tables,
-    pastOrders,
     activeOrders,
+    oldOrders,
   }
 });
 
