@@ -1,10 +1,10 @@
 <template>
   <div class="Cards">
     <div class="container">
-      <Card color="#F5365C" :count="getPersons" text="Aktif Masa" />
-      <Card color="#0079FB" :count="getPersons" text="Toplam Personel" />
-      <Card color="#2DCE89" :count="getPersons" text="Toplam Personel" />
-      <Card color="#FB6340" :count="getOldOrders" text="Toplam Sipariş" />
+      <Card color="#F5365C" :count="fullTable" text="Dolu Masa" />
+      <Card color="#0079FB" :count="emptyTable" text="Boş Masa" />
+      <Card color="#2DCE89" :count="getPersons.length" text="Toplam Personel" />
+      <Card color="#FB6340" :count="getOldOrders.length" text="Toplam Sipariş" />
     </div>
   </div>
 </template>
@@ -18,9 +18,23 @@ export default {
   components: {
     Card,
   },
+  data(){
+    return{
+      fullTable: 0,
+      emptyTable: 40,
+    }
+  },
   computed:{
-    ...mapGetters(['getOldOrders', 'getPersons'])
-  }
+    ...mapGetters(['getOldOrders', 'getPersons', 'getTablesMenu'])
+  },
+  created(){
+    this.getTablesMenu.forEach((item) => {
+      if(item.fullness == 1){
+        this.fullTable++;
+      }
+    })
+    this.emptyTable = this.emptyTable - this.fullTable;
+  },
 };
 </script>
 

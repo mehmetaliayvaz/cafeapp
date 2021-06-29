@@ -30,7 +30,7 @@
               <td>{{ item.dessert }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <svg @click="deleteProduct(index)" width="20px" height="20px" viewBox="0 0 32 32">
+                <svg id="delItem" @click="deleteProduct(index)" width="20px" height="20px" viewBox="0 0 32 32">
                   <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
                   <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
                 </svg>
@@ -87,9 +87,11 @@ export default {
       this.tableContent = this.getTablesMenu;
     },
     activeOrder(index){
-      this.show = 0;
-      this.activeIndex = index;
-      this.$store.state.activeOrders.activeOrders = this.getTablesMenu[index].content;
+      if(this.getTablesMenu[index].active == 1){
+        this.show = 0;
+        this.activeIndex = index;
+        this.$store.state.activeOrders.activeOrders = this.getTablesMenu[index].content;
+      }
     },
     deleteProduct(index){
       this.$store.state.activeOrders.activeOrders.splice(index, 1);
@@ -102,6 +104,7 @@ export default {
       path.date = new Date();
       this.$store.dispatch('setStorageTablesMenu');
       this.$toast.success('Değişiklikler başarıyla kaydedildi...')
+      this.show = 1;
     },
     endOrder(){
       var path = this.$store.state.tables.tables[this.activeIndex];
@@ -127,6 +130,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+  #delItem{
+    cursor: pointer;
+  }
+
 
 </style>

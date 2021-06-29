@@ -1,6 +1,6 @@
 <template>
   <div class="Card" :style=" 'background-color: ' + color">
-    <span>{{ count.length  }}</span>
+    <span>{{ count == null || undefined ? 0 : count  }}</span>
     <span>{{ text }}</span>
   </div>
 </template>
