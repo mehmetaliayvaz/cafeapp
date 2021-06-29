@@ -1,14 +1,20 @@
 <template>
   <div class="Card" :style=" 'background-color: ' + color">
-    <span>67</span>
-    <span>Bugün Toplam Sipariş</span>
+    <span>{{ count.length  }}</span>
+    <span>{{ text }}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Card',
-  props: ['color'],
+  props: ['color', 'count', 'text'],
+  // filters: {
+  //   price(value){
+  //     var price = value.reduce((toplam, item) => toplam + parseInt(item.price), 0);
+  //     return price + ' TL';
+  //   }
+  // },
 
 }
 </script>

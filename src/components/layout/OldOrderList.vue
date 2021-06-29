@@ -10,7 +10,7 @@
         </tr>
         <tr @click="showOrder(index)" v-for="(item, index) in getOldOrders" :key="index" id="pastOrders">
           <td>#{{ index + 1 }}</td>
-          <td>{{ item.date.slice(0, 10) }}</td>
+          <td>{{ item.date }}</td>
           <td>{{ item.content | price}}</td>
         </tr>
       </table>
@@ -26,7 +26,7 @@
         </tr>
         <tr>
           <td>#{{ activeIndex + 1 }}</td>
-          <td>{{ activeOrder.date.slice(0, 10) }}</td>
+          <td>{{ activeOrder.date }}</td>
           <td>{{ activeOrder.person }}</td>
           <td>{{ activeOrder.content | price }}</td>
         </tr>
@@ -45,7 +45,7 @@
         </table>
       </div>
 
-      <div class="returnOrder">
+      <div class="returnOrder" @click="showDetail = false">
         <span>Geçmiş Siparişlere Geri Dön</span>
         <svg width="15" height="15" viewBox="0 0 32 32">
           <path d="M24 20v-4h-10v-4h10v-4l6 6zM22 18v8h-10v6l-12-6v-26h22v10h-2v-8h-16l8 4v18h8v-6z"></path>

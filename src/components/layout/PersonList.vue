@@ -58,13 +58,15 @@ export default {
       if(this.person.name != null && this.person.role != null){
         this.$store.dispatch('savePerson', this.person);
         this.person = {};
+        this.$toast.success('Personel başarıyla eklendi...');
       }
       else{
-        alert('Boş alan bırakmayınız!');
+        this.$toast.error('Boş alan bırakmayınız!');
       }
     },
     deletePerson(index){
       this.$store.dispatch('deletePerson', index);
+      this.$toast.success('Personel başarıyla silindi..');
     },
 
   }

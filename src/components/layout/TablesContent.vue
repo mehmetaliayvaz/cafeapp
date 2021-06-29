@@ -81,6 +81,7 @@ export default {
     saveTablesContent(){
       this.$store.state.tables.tables = this.tableContent;
       this.$store.dispatch('setStorageTablesMenu');
+      this.$toast.success('Değişiklikler başarıyla kaydedildi...')
     },
     isCreated(){
       this.tableContent = this.getTablesMenu;
@@ -100,6 +101,7 @@ export default {
       path.person = this.getPersons[this.getActivePerson].name;
       path.date = new Date();
       this.$store.dispatch('setStorageTablesMenu');
+      this.$toast.success('Değişiklikler başarıyla kaydedildi...')
     },
     endOrder(){
       var path = this.$store.state.tables.tables[this.activeIndex];
@@ -118,6 +120,7 @@ export default {
       this.$store.dispatch('setStorageOldOrders');
 
       this.show = 1;
+      this.$toast.success('Sipariş başarıyla tamamlandı...')
     },
   },
 
