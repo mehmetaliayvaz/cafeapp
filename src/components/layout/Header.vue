@@ -6,9 +6,11 @@
       </div>
       <div class="Header-right">
         <h4>01.01.2021</h4>
-        <img src="../../assets/person-avatar.png" alt="" />
-        <div class="Header-right-person">
-          <span @click="activePerson(index)" v-for="(person, index) in getPersons" :key="index">{{ person.name }}</span>
+        <div class="Header-right-img">
+          <img src="../../assets/person-avatar.png" alt="" />
+          <div class="Header-right-person">
+            <span @click="activePerson(index)" v-for="(person, index) in getPersons" :key="index">{{ person.name }}</span>
+          </div>
         </div>
       </div>
     </div>

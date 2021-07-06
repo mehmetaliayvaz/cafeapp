@@ -1,7 +1,7 @@
 .Sidebar{
   background-color: $sidebar-color;
   width: 230px;
-  height: 100vh;
+  min-height: 100vh;
   box-shadow: $sidebar-shadow;
   display: flex;
   flex-direction: column;

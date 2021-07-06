@@ -40,12 +40,12 @@ export default {
       this.$emit('change', id);
     },
     addCategory(){
-      if(!this.getMenu.includes(this.menu.category)){
+      if(this.menu.category != null){
         this.$store.dispatch('addCategory', this.menu);
         this.menu.category = null;
       }
       else{
-        alert('Bu kategory mevcut...')
+        this.$toast.error('Kategori adı boş olamaz...');
       }
     },
     deleteCategory(index){

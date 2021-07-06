@@ -1,6 +1,7 @@
 <template>
   <div class="TablesContent">
     <div class="TablesContent-container">
+      <h4 v-if="!showAlert && $route.path == '/tables'">Hiç masa eklenmemiş, lütfen "Masa Düzenleme" sayfasından masa ekleyiniz.</h4>
       <div v-if="this.$route.path == '/tables-edit'">
         <div class="TablesContent-wrapper">
           <Table  
@@ -39,8 +40,10 @@
           </table>
         </div>  
         <div class="TablesContent-menu-button">
-          <button @click="saveOrder">Değişiklikleri Kaydet</button>
-          <button @click="endOrder">Siparişi Bitir</button>
+          <div class="container">
+            <button @click="saveOrder">Değişiklikleri Kaydet</button>
+            <button @click="endOrder">Siparişi Bitir</button>
+          </div>
         </div>
       </div>
       <button v-if="this.$route.path == '/tables-edit'" @click="saveTablesContent">Değişiklikleri Kaydet</button>
@@ -63,7 +66,15 @@ export default {
     MenuEdit,
   },
   computed:{
-    ...mapGetters(['getTablesMenu', 'getActiveOrders', 'getActivePerson', 'getPersons'])
+    ...mapGetters(['getTablesMenu', 'getActiveOrders', 'getActivePerson', 'getPersons']),
+    showAlert(){
+      this.getTablesMenu.forEach(item => {
+        if(item.active == 1){
+          this.isControl = true;
+        }
+      })
+      return this.isControl
+    }
   },
   created(){
     this.isCreated();
@@ -75,6 +86,7 @@ export default {
       ],
       show: 1,
       activeIndex: null,
+      isControl: false,
     }
   },
   methods: {
@@ -107,6 +119,7 @@ export default {
       this.show = 1;
     },
     endOrder(){
+      this.saveOrder();
       var path = this.$store.state.tables.tables[this.activeIndex];
       var order = {
         date : path.date,

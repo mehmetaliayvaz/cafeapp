@@ -52,9 +52,14 @@ export default {
   },
   methods:{
     addMenuContents(){
-      this.$store.state.menu.menu[this.change-1].contents.push(this.item);
-      this.$store.dispatch('setStorageMenu');
-      this.item = {};
+      if(this.item.dessert != null && this.item.price != null){
+        this.$store.state.menu.menu[this.change-1].contents.push(this.item);
+        this.$store.dispatch('setStorageMenu');
+        this.item = {};
+      }
+      else{
+        this.$toast.error('Boş alan bıraktınız...')
+      }
     },
     deleteMenuContents(index){
       this.$store.state.menu.menu[this.change-1].contents.splice(index, 1);
