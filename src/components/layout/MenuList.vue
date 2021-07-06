@@ -8,7 +8,7 @@
       </tr>
       <tr v-for="(item, index) in getMenu[change-1].contents" :key="index">
         <td>{{ item.dessert }}</td>
-        <td>{{ item.price }}</td>
+        <td>{{ item.price }} TL</td>
         <td v-if="$route.path == '/menu-edit'">
           <svg @click="deleteMenuContents(index)" width="20px" height="20px" viewBox="0 0 32 32">
             <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
