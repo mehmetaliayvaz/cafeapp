@@ -1,24 +1,18 @@
-# cafeapp
+# cafeApp
 
-## Project setup
+## Proje Hakkında
+
+CafeApp bir kafe yönetim otomasyonudur. Vuejs, Scss, Vuex, Vue-router teknolojilerini kullandım. Personel ekleme, menü ekleme, masa ekleme, aktif sipariş oluşturma, geçmiş siparişleri görüntüleme özelliklerine sahiptir. CafeApp, verileri localstorage içinde tutar.
+
+[Demo](http://cafeapp.vercel.app/)
+
+### Bağımlılıkları Yüklemek için
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Projeyi Çalıştırmak için
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
