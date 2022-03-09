@@ -27,8 +27,7 @@
       transition: 0.5s;
 
       &:hover{
-        width: 20px;
-        height: 20px;
+        transform: scale(1.3);
       }
     }
   }

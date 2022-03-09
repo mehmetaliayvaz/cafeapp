@@ -2,7 +2,7 @@
   <div class="List">
     <table>
       <tr>
-        <th>Tatlı</th>
+        <th>Ürün</th>
         <th>Fiyat</th>
         <th></th>
       </tr>
