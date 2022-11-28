@@ -18,7 +18,7 @@
 
   &-menu{
 
-    &-list{
+    &-content{
       display: flex;
 
       th{
@@ -31,6 +31,14 @@
         padding: 10px 0;
       }
 
+    }
+
+    &-list{
+      display: block;
+
+      tr{
+        display: flex;
+      }
     }
 
   }

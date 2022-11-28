@@ -19,32 +19,35 @@
         </div>
       </div>
       <div class="TablesContent-menu" v-if="show == 0">
-        <div class="TablesContent-menu-list">
-          <MenuEdit  />
-          <table>
-            <tr>
-              <th>Sipariş Listesi</th>
-              <th>Fiyat</th>
-              <th></th>
-            </tr>
-            <tr v-for="(item, index) in getActiveOrders" :key="index">
-              <td>{{ item.dessert }}</td>
-              <td>{{ item.price }} TL</td>
-              <td>
-                <svg id="delItem" @click="deleteProduct(index)" width="20px" height="20px" viewBox="0 0 32 32">
-                  <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
-                  <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
-                </svg>
-              </td>
-            </tr>
-          </table>
-        </div>  
-        <div class="TablesContent-menu-button">
-          <div class="container">
-            <button @click="saveOrder">Değişiklikleri Kaydet</button>
-            <button @click="endOrder">Siparişi Bitir</button>
+        <div class="TablesContent-menu-content">
+          <div>
+            <MenuEdit  />
+            <div class="TablesContent-menu-button">
+              <button @click="saveOrder">Değişiklikleri Kaydet</button>
+              <button @click="endOrder">Siparişi Bitir</button>
+            </div>
           </div>
-        </div>
+          <div style="width: 350px">
+            <table class="TablesContent-menu-list">
+              <tr>
+                <th style="width: 100%">Sipariş Listesi</th>
+                <th>Fiyat</th>
+                <th></th>
+              </tr>
+              <tr v-for="(item, index) in getActiveOrders" :key="index">
+                <td style="width: 100%">{{ item.dessert }}</td>
+                <td style="white-space: nowrap; margin-right: 0.5rem">{{ item.price }} TL</td>
+                <td>
+                  <svg id="delItem" @click="deleteProduct(index)" width="20px" height="20px" viewBox="0 0 32 32">
+                    <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+                    <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
+                  </svg>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>  
+        
       </div>
       <button v-if="this.$route.path == '/tables-edit'" @click="saveTablesContent">Değişiklikleri Kaydet</button>
     </div>
