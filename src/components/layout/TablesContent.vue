@@ -23,8 +23,10 @@
           <div>
             <MenuEdit  />
             <div class="TablesContent-menu-button">
-              <button @click="saveOrder">Değişiklikleri Kaydet</button>
-              <button @click="endOrder">Siparişi Bitir</button>
+              <div class="container">
+                <button @click="saveOrder">Değişiklikleri Kaydet</button>
+                <button @click="endOrder">Siparişi Bitir</button>
+              </div>
             </div>
           </div>
           <div style="width: 350px">
